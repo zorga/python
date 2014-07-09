@@ -1,3 +1,6 @@
+#
+# LUHN ALGORITHM FOR BANK CARD NUMER IMPLEMENTATION
+#
 import sys
 
 def main():
