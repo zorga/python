@@ -6,7 +6,10 @@ def main():
     except ValueError:
         print 'You must enter a number !'
     result = luhn(i_cbn)
-    print result
+    if result % 10 == 0:
+        print 'checksum valid !'
+    else:
+        print 'invalid checksum !'
 
 def luhn(i_cbn):
     s_cbn = str(i_cbn)
