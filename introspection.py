@@ -1,4 +1,5 @@
 import sys
+from coordinate import *
   
 def main():
 
@@ -58,6 +59,12 @@ def main():
     lol = outer(lol) # foo = inner -> which returns 2 because foo returns 1
     # Now calling the decorated version of lol
     print('decorated : ' + str(lol()))
+    print(50*'=')
+    # using the class coordinate
+    one = Coordinate(100, 100)
+    two = Coordinate(200, 300)
+    print(Coordinate.add(one, two))
+    print(Coordinate.sub(one, two))
 
 if __name__ == '__main__':
     main()
