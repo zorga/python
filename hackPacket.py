@@ -3,33 +3,34 @@ from scapy.all import *
 import string
 import dpkt
 
-def main():
-    path = './file.pcap'
-    f = open(path)
-    pcap = dpkt.pcap.Reader(f)
-    udp_n = 0
-    tcp_n = 0
-    total_packet = 0
-    i = 0
+def checkArgs(func):
+    def wrapper():
+        if not (len(sys.argv) > 1):
+            print("This program takes a pcap file in argument !")
+        else:
+            func()
+    return wrapper
 
+@checkArgs
+def readPayloads():
+    f = open(sys.argv[1])
+    i = 0
+    pcap = dpkt.pcap.Reader(f)
     for ts, buf in pcap:
         eth = dpkt.ethernet.Ethernet(buf)
-        total_packet += 1
-        if eth.type == 2048:
+        if eth.type == 2048: # type 2048 -> IPv4
             ip = eth.data
-            if ip.p == 17:
-                udp_n += 1
+            if ip.p == 17: # 17 -> UDP
                 udp = ip.data
                 payload = udp.data
                 res = open('./packets/packets' + str(i) + '.txt', 'w')
                 res.write(str(payload))
                 res.close()
-            if ip.p == 6:
-                tcp_n += 1
         i += 1
-    print('> total : ' + str(total_packet))
-    print('> number of udp packets : ' + str(udp_n))
-    print('> number of tcp packets : ' + str(tcp_n))
+    print("payloads retrieved successfully ! :) ")
+
+def main():
+    readPayloads()
 
 if __name__ == '__main__':
     main()
