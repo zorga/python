@@ -1,6 +1,4 @@
 import sys
-from scapy.all import *
-import string
 import dpkt
 
 def checkArgs(func):
