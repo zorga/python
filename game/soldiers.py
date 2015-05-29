@@ -58,7 +58,7 @@ class Sniper(Soldier):
         """Inherited from Soldier but Sniper shoot 30 pv instead of 10"""
         print('--> ' + self.name + ' is shooting ' + enemy.name + ' !!!')
         if(isinstance(enemy, Soldier)):
-            enemy.pv -= 30
+            enemy.pv -= 100
         else:
             print('enemy must be a valid soldier !')
         print('--> ' + enemy.name + ' has lost 30 pv !')

@@ -1,6 +1,7 @@
 #!/usr/bin/python
 
 from soldiers import *
+import sys
 
 def main():
     paul = Soldier('Paul', 'Belgium')
