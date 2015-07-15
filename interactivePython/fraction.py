@@ -10,12 +10,6 @@ class Fraction:
         """overrides the __str__ method to print the Fraction objects nicely"""
         return str(self.num) + "/" + str(self.den)
 
-    def sameDenominatorNum(frac1, frac2):
-        @staticmethod
-        firstNum = (frac1.num * frac2.den)
-        secondNum = (frac1.den * frac2.num)
-        return [firstNum, secondNum]
-
     def __add__(self, otherFraction):
         """this method overrides the + operator definition for allowing us to
         use it with Fraction objects"""
@@ -27,14 +21,16 @@ class Fraction:
 
     def __le__(self, other):
         """Overrides the equality less than or equal to operator"""
-        fracs = sameDenominatorNum(self, other)
-        return fracs[1] <= fracs[2]
+        firtNum = self.num * other.den
+        secondNum = self.den * other.num
+        return firstNum <= secondNum
 
     def __eq__(self, other):
         """Overrides the equality operator to be able to compare to fraction
         object. Compares the values, not the references"""
-        fracs = sameDenominatorNum(self, other)
-        return fracs[1] == fracs[2]
+        firstNum = self.num * other.den
+        secondNum = self.den * other.num
+        return firstNum == secondNum
 
     def gcd(self, m, n):
         """Calculate the Greatest common divisor of m and n and returns it"""
