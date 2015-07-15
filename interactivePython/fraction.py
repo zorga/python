@@ -19,11 +19,40 @@ class Fraction:
         common = self.gcd(newNum, newDen)
         return Fraction(newNum // common, newDen // common)
 
+    def __sub__(self, otherFraction):
+        """this method overrides the - operator definition for allowing us to
+        use it with Fraction objects"""
+        newNum = (self.num * otherFraction.den) - (self.den * otherFraction.num)
+        newDen = self.den * otherFraction.den
+        #Factoring the result :
+        common = self.gcd(newNum, newDen)
+        return Fraction(newNum // common, newDen // common)
+
     def __le__(self, other):
         """Overrides the equality less than or equal to operator"""
-        firtNum = self.num * other.den
+        firstNum = self.num * other.den
         secondNum = self.den * other.num
         return firstNum <= secondNum
+
+    def __lt__(self, other):
+        firstNum = self.num * other.den
+        secondNum = self.den * other.num
+        return firstNum < secondNum
+
+    def __ne__(self, other):
+        firstNum = self.num * other.den
+        secondNum = self.den * other.num
+        return firstNum != secondNum
+
+    def __gt__(self, other):
+        firstNum = self.num * other.den
+        secondNum = self.den * other.num
+        return firstNum > secondNum
+
+    def __ge__(self, other):
+        firstNum = self.num * other.den
+        secondNum = self.den * other.num
+        return firstNum >= secondNum
 
     def __eq__(self, other):
         """Overrides the equality operator to be able to compare to fraction
