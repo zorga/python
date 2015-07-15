@@ -4,7 +4,11 @@ class Fraction:
 
     def __init__(self, top, bottom):
         self.num = top
-        self.den = bottom
+        # We check if the bottom part of the fraction is greater than zero
+        if bottom <= 0:
+            raise ValueError("The denominator must be greater than zero !!!")
+        else:
+            self.den = bottom
 
     def __str__(self):
         """overrides the __str__ method to print the Fraction objects nicely"""
@@ -29,7 +33,7 @@ class Fraction:
         return Fraction(newNum // common, newDen // common)
 
     def __le__(self, other):
-        """Overrides the equality less than or equal to operator"""
+        """Overrides the less than or equal to operator"""
         firstNum = self.num * other.den
         secondNum = self.den * other.num
         return firstNum <= secondNum
