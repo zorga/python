@@ -1,3 +1,5 @@
+import sys
+
 from fraction import *
 
 def performTests():
@@ -49,16 +51,31 @@ def performTests():
         print("Substraction operator : failed")
     print("--> Score : " + str(score) + "/5")
 
+def checkInput(user):
+    """
+    Check if the String user if in the form \"n/d\"
+    returns False otherwise
+    """
+    res = False
+    if len(user) == 3 and user[1] == "/":
+        if user[0].isdigit() and user[2].isdigit():
+            res = True
+    return res
+
 def parseInput():
     """
     parse the fraction provided by the user in a String of the form
     1/4, or 1/9, or 7/3, etc. and returns a Fraction object
     """
-    fracString = input('Enter your fraction in the form "n/d" : ')
-    Num = int(fracString[0])
-    Den = int(fracString[2])
     res = None
-    # frac[1] is the "/" character of the function
+    fracString = input('Enter your fraction in the form "n/d" : ')
+    if checkInput(fracString):
+        Num = int(fracString[0])
+        Den = int(fracString[2])
+    else:
+        print("Invalid input ! Aborting...")
+        sys.exit()
+        # frac[1] is the "/" character of the function
     try:
         res = Fraction(Num, Den)
     except:
@@ -70,11 +87,11 @@ def parseInput():
 def main():
     """ fraction class tests """
     # INITIALIZING THE FUNCTIONS :
-    #userFrac = parseInput()
-    #print(userFrac)
+    userFrac = parseInput()
+    print(userFrac)
 
     # TESTING PART :
-    performTests()
+    # performTests()
 
 
 if __name__ == '__main__':
