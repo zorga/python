@@ -39,6 +39,25 @@ def parseEntry():
     
     for i in range(nmk[1]):
         roads.append(map(int, raw_input().strip().split(' ')))
+
+    # Constraints
+    assert 2 <= nmk[0] <= 10**3
+    assert 1 <= nmk[1] <= (2 * (10**3)) 
+    assert 1 <= nmk[2] <= 10
+    
+    for e in shopCenters:
+        assert 0 <= e[0] <= nmk[2] 
+
+        for aij in e[1:]:
+            assert 1 <= aij <= nmk[2]
+
+        # All aij are differents
+        if len(e[1:]) > 1:
+            assert len(e[1:]) != len(set(e[1:]))
+
+    for e in roads:
+        assert e[0] != e[1]
+        assert 1 <= e[2] <= 10**4
     
     return nmk, shopCenters, roads
  
