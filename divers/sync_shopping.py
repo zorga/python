@@ -17,7 +17,34 @@ little_cat = []
 import sys
 
 def main():
-    pass
+    '''
+    The main function of the program
+    '''
+    nmk, shopCenters, roads = parseEntry()
+    print(nmk)
+    print(shopCenters)
+    print(roads)
+
+def parseEntry():
+    '''
+    Parses the data entered by user and check the
+    constraints
+    '''
+    # First line : N M K
+    nmk = map(int, raw_input().strip().split(' '))
+    # next N lines : shop center description
+    shopCenters = [][]
+    # next M lines : roads description
+    roads = [][]
+
+    for i in range(nmk[0]):
+        shopCenters[i] = map(int(raw_input().split().strip(' ')))
+    
+    for i in range(nmk[1]):
+        roads[i] = map(int(raw_input().split().strip(' ')))
+    
+    return nmk, shopCenters, roads
+ 
 
 if __name__ == '__main__':
     main()
