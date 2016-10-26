@@ -21,9 +21,6 @@ def main():
     The main function of the program
     '''
     nmk, shopCenters, roads = parseEntry()
-    print(nmk)
-    print(shopCenters)
-    print(roads)
 
 def parseEntry():
     '''
@@ -33,15 +30,15 @@ def parseEntry():
     # First line : N M K
     nmk = map(int, raw_input().strip().split(' '))
     # next N lines : shop center description
-    shopCenters = [][]
+    shopCenters = []
     # next M lines : roads description
-    roads = [][]
+    roads = []
 
     for i in range(nmk[0]):
-        shopCenters[i] = map(int(raw_input().split().strip(' ')))
+        shopCenters.append(map(int, raw_input().strip().split(' ')))
     
     for i in range(nmk[1]):
-        roads[i] = map(int(raw_input().split().strip(' ')))
+        roads.append(map(int, raw_input().strip().split(' ')))
     
     return nmk, shopCenters, roads
  
