@@ -11,11 +11,12 @@ __author__ = "Nicolas Ooghe"
 # types of fish they've already purchased
 # The concatenation of both lists must correspond to
 # all the fish types (collective purchasing)
+
 big_cat = []
 little_cat = []
-nmk = []
 shop_centers = []
 roads = []
+nmk = []
 
 
 import sys
@@ -77,7 +78,7 @@ def parse_entry():
     res = 0
 
     # First line : N M K
-    nmk = map(int, raw_input().strip().split(' '))
+    nmk.append(map(int, raw_input().strip().split(' ')))
 
     # next N lines : shop center description
     for i in range(nmk[0]):
