@@ -14,8 +14,15 @@ The concatenation of both lists must correspond to
 all the fish types (collective purchasing)
 (at the end of the shopping of course)
 '''
+debug = 1
 big_cat = []
 little_cat = []
+
+#NMK, shops, edges = 0, 0, 0
+# Hard-coded sample input during debuggin :
+NMK = [5, 5, 5]
+shops = [[1, 1], [1, 2], [1, 3], [1, 4], [1, 5]]
+edges = [[1, 2, 10], [1, 3, 10], [2, 4, 10], [3, 5, 10], [4, 5, 10]]
 
 
 import sys
@@ -25,16 +32,28 @@ def main():
     '''
     The main function of the program
     '''
-    nmk, shop_centers, roads = parse_entry()
+    # Uncomment the following lines to test other inputs
+    #nmk, shop_centers, roads = parse_entry()
+    # Binding the globals to the user's data :
+    #NMK, shops, edges = nmk, shop_centers, roads
 
-    # debug
-    print(nmk)
-    print(shop_centers)
-    print(roads)
+    if debug:
+        print(NMK)
+        print(shops)
+        print(edges)
 
-    # Run graph traversals by the cats
-    big_cat = do_the_shopping(1, nmk[0])
-    little_cat = do_the_shopping(1, nmk[0])
+    adjmatrix()
+
+
+def adjmatrix():
+    '''
+    Build an adjacency matrix representing the graph
+    '''
+    res = []
+    i = 0
+    for v in range(NMK[0]):
+        res.append([0 for item in range(NMK[0])])
+    print(res)
 
 
 def check_list():
@@ -43,10 +62,10 @@ def check_list():
     of fish
     '''
     currentList = big_cat + little_cat
-    return len(set(currentList)) == nmk[2]
+    return len(set(currentList)) == NMK[2]
 
 
-def do_the_shopping(start, dest):
+def do_the_shopping():
     '''
     function that executes the graph traversal
     by the big and little cats
