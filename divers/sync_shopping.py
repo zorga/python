@@ -7,16 +7,15 @@ __author__ = "Nicolas Ooghe"
 
 # Define globals here
 
-# the cats are represented using lists showing the
-# types of fish they've already purchased
-# The concatenation of both lists must correspond to
-# all the fish types (collective purchasing)
-
+'''
+the cats are represented using lists showing the
+types of fish they've already purchased
+The concatenation of both lists must correspond to
+all the fish types (collective purchasing)
+(at the end of the shopping of course)
+'''
 big_cat = []
 little_cat = []
-shop_centers = []
-roads = []
-nmk = []
 
 
 import sys
@@ -26,11 +25,7 @@ def main():
     '''
     The main function of the program
     '''
-    parsing = parse_entry()
-
-    if not parsing:
-        print("Incorrect user's entries !")
-        return
+    nmk, shop_centers, roads = parse_entry()
 
     # debug
     print(nmk)
@@ -60,13 +55,6 @@ def do_the_shopping(start, dest):
     currPos = start
     groceries = []
 
-    # First collect the fish from current position
-     
-    while (start != dest):
-        # decrement currPos because shopping centers indices
-        # begin at 1 and list indices begin at 0
-        groceries.append(shop_centers[currPos - 1][1])
-
     return groceries 
 
 
@@ -77,8 +65,11 @@ def parse_entry():
     '''
     res = 0
 
+    shop_centers = []
+    roads = []
+
     # First line : N M K
-    nmk.append(map(int, raw_input().strip().split(' ')))
+    nmk = map(int, raw_input().strip().split(' '))
 
     # next N lines : shop center description
     for i in range(nmk[0]):
@@ -108,7 +99,7 @@ def parse_entry():
         assert 1 <= e[2] <= 10**4
     
     res = 1
-    return res    
+    return nmk, shop_centers, roads
  
 
 if __name__ == '__main__':
