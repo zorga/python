@@ -44,6 +44,10 @@ def main():
 
     adjmatrix()
 
+def print_matrix(matrix):
+    for row in matrix:
+        print(row)
+
 
 def adjmatrix():
     '''
@@ -52,8 +56,16 @@ def adjmatrix():
     res = []
     i = 0
     for v in range(NMK[0]):
-        res.append([0 for item in range(NMK[0])])
-    print(res)
+        res.append([-99 for item in range(NMK[0])])
+    for r in edges:
+        i, j = r[0], r[1]
+        weigh = r[2]
+        res[i-1][j-1] = weigh
+    for i in range(NMK[0]):
+        for j in range(NMK[0]):
+            if i == j:
+                res[i][j] = 0
+    print_matrix(res)
 
 
 def check_list():
