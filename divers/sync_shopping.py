@@ -42,9 +42,16 @@ def main():
         print(shops)
         print(edges)
 
-    adjmatrix()
+    matrix = adjmatrix()
+    print_matrix(matrix)
+
+    do_the_shopping(matrix)
+
 
 def print_matrix(matrix):
+    '''
+    to print the matrices in a readable way
+    '''
     for row in matrix:
         print(row)
 
@@ -65,7 +72,7 @@ def adjmatrix():
         for j in range(NMK[0]):
             if i == j:
                 res[i][j] = 0
-    print_matrix(res)
+    return res
 
 
 def check_list():
@@ -77,14 +84,16 @@ def check_list():
     return len(set(currentList)) == NMK[2]
 
 
-def do_the_shopping():
+def do_the_shopping(m):
     '''
     function that executes the graph traversal
     by the big and little cats
     The most important function !
     '''
-    currPos = start
     groceries = []
+    start = 1
+    finish = NMK[0]
+    
 
     return groceries 
 
