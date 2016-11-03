@@ -8,9 +8,11 @@ def main():
     assert 0 <= t2 <= 2
     assert 3 <= n <= 20
 
-def fibo(ti, tiplusone):
-    
-
+    for i in range(2, n):
+        fibo = t1 + (t2**2)
+        t1 = t2
+        t2 = fibo
+    print(fibo)
 
 if __name__ == '__main__':
     main()
