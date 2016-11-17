@@ -7,6 +7,7 @@ def main():
     s = raw_input().strip()
     s = s.upper()
     assert 0 <= len(s) <= 10**6
+
     # Current score of the winner
     winner = 0
 
@@ -28,8 +29,6 @@ def main():
 
     # Case : All letters in 's' are not equals:
     else:
-
-        # Computes the scores
         score_stuart = score(calc_substr_list(s, cons))
         score_kevin = score(calc_substr_list(s, voy))
 
@@ -50,8 +49,11 @@ def check_equals(l):
     iterator = iter(l)
     try:
         first = next(iterator)
+
     except StopIteration:
+
         return True
+
     return all(first == rest for rest in iterator)
 
 def score_one_letter(s):
@@ -61,6 +63,7 @@ def score_one_letter(s):
     '''
     l = len(s)
     score = 0
+
     for i in range(1, l + 1):
         score = score + i
     
