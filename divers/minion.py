@@ -12,7 +12,8 @@ def main():
     s = raw_input().strip()
     s = s.upper()
     assert 0 <= len(s) <= 10**6
-    score_stuart = stuart(s, cons)
+
+    score_stuart = score(stuart(s, cons))
     score_kevin = kevin(s)
 
 def listdiff(first, second):
@@ -49,8 +50,26 @@ def stuart(s, cons):
             for i in range(1, len(s[a:]) + 1):
                 res.append(s[a:a + i])
         j = j + 1
-    print(res)
-    return 0
+
+    return res
+
+def score(substr_list):
+    '''
+    computes the score given the 'substr_list'
+    '''
+    score_dict = {}
+    for substr in substr_list:
+        if substr not in score_dict:
+            score_dict[substr] = 1
+        else:
+            score_dict[substr] = score_dict[substr] + 1
+    
+    score = 0
+    for k in score_dict.keys():
+        score = score + score_dict[k]
+        
+    print(score)
+    return score
 
 def kevin(s):
     '''
