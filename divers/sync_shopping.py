@@ -5,6 +5,8 @@ Synchronous Shopping in the Graph Theory section
 
 __author__ = "Nicolas Ooghe"
 
+import sys
+
 # Define globals here
 
 '''
@@ -18,14 +20,11 @@ debug = 1
 big_cat = []
 little_cat = []
 
-#NMK, shops, edges = 0, 0, 0
+# NMK, shops, edges = 0, 0, 0
 # Hard-coded sample input during debuggin :
 NMK = [5, 5, 5]
 shops = [[1, 1], [1, 2], [1, 3], [1, 4], [1, 5]]
 edges = [[1, 2, 10], [1, 3, 10], [2, 4, 10], [3, 5, 10], [4, 5, 10]]
-
-
-import sys
 
 
 def main():
@@ -114,7 +113,7 @@ def parse_entry():
     # next N lines : shop center description
     for i in range(nmk[0]):
         shop_centers.append(map(int, raw_input().strip().split(' ')))
-    
+
     # next M lines : roads description
     for i in range(nmk[1]):
         roads.append(map(int, raw_input().strip().split(' ')))
