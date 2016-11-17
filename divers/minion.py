@@ -13,8 +13,14 @@ def main():
     s = s.upper()
     assert 0 <= len(s) <= 10**6
 
-    score_stuart = score(stuart(s, cons))
-    score_kevin = kevin(s)
+    score_stuart = score(calc_substr_list(s, cons))
+    score_kevin = score(calc_substr_list(s, voy))
+
+    if score_stuart == score_kevin:
+        print("Draw")
+    else:
+        print("Stuart " + str(score_stuart))
+        print("Kevin " + str(score_kevin))
 
 def listdiff(first, second):
     '''
@@ -31,22 +37,20 @@ def all_occurrences(substr, s):
     res = [m.start() for m in re.finditer(substr, s)]
     return res
 
-def stuart(s, cons):
+def calc_substr_list(s, alpha):
     '''
-    find all substring starting with consonents in 's'
+    find all substring starting with the letters in the alpha 'list' in 's'
     '''
     res = []
     begin_indexes = []
 
-    sCons = [i for i in s if i in cons]
-    sCons = [c for c in set(sCons)]
-    print(sCons)
+    sAlpha = [i for i in s if i in alpha]
+    sAlpha = [c for c in set(sAlpha)]
 
     j = 0
-    while (j < len(sCons)):
-        curr_cons_positions = all_occurrences(sCons[j], s)
-        print(curr_cons_positions)
-        for a in curr_cons_positions:
+    while (j < len(sAlpha)):
+        curr_letter_positions = all_occurrences(sAlpha[j], s)
+        for a in curr_letter_positions:
             for i in range(1, len(s[a:]) + 1):
                 res.append(s[a:a + i])
         j = j + 1
@@ -68,7 +72,6 @@ def score(substr_list):
     for k in score_dict.keys():
         score = score + score_dict[k]
         
-    print(score)
     return score
 
 def kevin(s):
