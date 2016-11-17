@@ -19,8 +19,11 @@ def main():
     if score_stuart == score_kevin:
         print("Draw")
     else:
-        print("Stuart " + str(score_stuart))
-        print("Kevin " + str(score_kevin))
+        winner = max(score_stuart, score_kevin)
+        if winner == score_stuart:
+            print("Stuart " + str(score_stuart))
+        else:
+            print("Kevin " + str(score_kevin))
 
 def listdiff(first, second):
     '''
