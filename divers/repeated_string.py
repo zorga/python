@@ -5,12 +5,20 @@ import sys
 
 def main():
     s = raw_input().strip()
-    n = long(raw_input().strip())
+    l = long(raw_input().strip())
+    n = 0
 
-    ss = s * n
-    cnt = Counter(ss[0:10])
-    print cnt
-    print cnt['a']
+    for i in s:
+        if i == 'a':
+            n = n + 1
+
+    res = n * (n / len(s))
+
+    for i in s[:l % len(s)]:
+        if i == 'a':
+            res += 1
+
+    print res
 
 if __name__ == '__main__':
     main()
