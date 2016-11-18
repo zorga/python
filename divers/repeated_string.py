@@ -8,9 +8,9 @@ def main():
     n = long(raw_input().strip())
 
     ss = s * n
-    cnt = Counter(ss)
+    cnt = Counter(ss[0:10])
+    print cnt
     print cnt['a']
-    
 
 if __name__ == '__main__':
     main()
