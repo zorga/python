@@ -8,12 +8,10 @@ def main():
     assert len(s) % k == 0
 
     num_lines = len(s) / k
-    
     sub_str = []
-    
     limit = k
-
     i = 0
+
     while i < len(s):
         tmp = s[i:limit]
         sub_str.append(tmp)
