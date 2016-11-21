@@ -23,5 +23,19 @@ def main():
 
     print sub_str
 
+    final = []
+
+    for word in sub_str:
+        letters = set()
+        sub = ""
+        for c in word:
+            if c not in letters:
+                sub += c 
+            letters.add(c)
+        final.append(sub)
+
+    print final
+        
+
 if __name__ == '__main__':
     main()
