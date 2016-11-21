@@ -8,7 +8,6 @@ def main():
     assert len(s) % k == 0
 
     num_lines = len(s) / k
-    print num_lines
     
     sub_str = []
     
@@ -21,10 +20,6 @@ def main():
         i = i + k
         limit = limit + k
 
-    print sub_str
-
-    final = []
-
     for word in sub_str:
         letters = set()
         sub = ""
@@ -32,10 +27,7 @@ def main():
             if c not in letters:
                 sub += c 
             letters.add(c)
-        final.append(sub)
-
-    print final
-        
+        print sub
 
 if __name__ == '__main__':
     main()
