@@ -10,7 +10,8 @@ def main():
 
     for e in perm:
         tmp = ""
-        tmp += str(e[0]) + str(e[1])
+        for i in e:
+            tmp += str(i)
         res.append(tmp)
     res.sort()
     
