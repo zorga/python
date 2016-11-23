@@ -9,12 +9,9 @@ def main():
 
     for i in range(1, k + 1):
         tmp = list(combinations(s, i))
-        tmp.sort()
-        res += tmp
 
-    for e in res:
+    for e in tmp:
         print e
-    
 
 if __name__ == '__main__':
     main()
