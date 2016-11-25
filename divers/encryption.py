@@ -4,21 +4,23 @@ import sys
 import math
 
 def main():
+    # users input
     s = raw_input().strip() 
     s = s.replace(' ', '')
     l = len(s)
     rows = int(math.floor(math.sqrt(l)))
     columns = int(math.ceil(math.sqrt(l)))
-    grid = [] 
-    count = 0
-    i = 0
-    j = columns
+    
+    # check constraints
+    assert rows < columns
+    assert rows * columns >= l
 
-    while count < rows:
-        grid.append(s[i:j])
-        i = i + columns
-        j = j + columns
-        count = count + 1
+    grid = [] 
+
+    for i in range(0, l, columns):
+        grid.append(s[i:i + columns])
+    
+    print grid
 
     k = 0
     res = ''
